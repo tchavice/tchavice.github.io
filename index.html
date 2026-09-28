@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Savage Volunteer Fire Company Training</title>
+<title>Savage Volunteer Fire Company Training Site</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#f3f4f6;--panel:#fff;--ink:#14213d;--muted:#5b6577;--line:#d5d9e0;--yellow:#f2b705;--red:#b3261e;--ems:#1d6f8f;--fire:#b3261e;--on-dark:#fff;--head:#14213d;
@@ -66,7 +66,6 @@ section>.wrap>h2{font-size:2.3rem;font-weight:700}
 .res a{font-weight:600;text-decoration:underline;text-underline-offset:3px}
 .res span{display:block;color:var(--muted);font-size:.93rem}
 .topic h4{font:700 1.2rem "Barlow Condensed",sans-serif;margin:16px 0 0}
-.topic .when{color:var(--muted);font-size:.93rem;margin-top:10px}
 footer{margin-top:56px;padding:26px 0 34px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
 </style>
 </head>
@@ -79,22 +78,15 @@ footer{margin-top:56px;padding:26px 0 34px;border-top:1px solid var(--line);colo
 </header>
 <nav aria-label="Sections"><div class="wrap">
   <a href="#announcements">Announcements</a>
-  <a href="#mandatory">Mandatory training</a>
   <a href="#monthly">Monthly topics</a>
+  <a href="#mandatory">Mandatory training</a>
 </div></nav>
 
 <main>
 <section id="announcements"><div class="wrap">
   <h2>Training announcements</h2>
-  <p class="sub">Newest first. Check here before drill night.</p>
+  <p class="sub">Training news and updates.</p>
   <div class="ann" id="annList"></div>
-</div></section>
-
-<section id="mandatory"><div class="wrap">
-  <h2>Mandatory training</h2>
-  <p class="sub">Required training, grouped by who it applies to.</p>
-  <div id="mandList"></div>
-  <p class="sub" style="margin-top:22px">All courses are on Virtual Academy. For account problems, email <a href="mailto:virtualacademy@howardcountymd.gov">virtualacademy@howardcountymd.gov</a>.</p>
 </div></section>
 
 <section id="monthly"><div class="wrap">
@@ -102,6 +94,12 @@ footer{margin-top:56px;padding:26px 0 34px;border-top:1px solid var(--line);colo
   <p class="sub">Choose a month to see the Fire and EMS topic.</p>
   <div class="months" id="months" role="group" aria-label="Month"></div>
   <div class="split" id="topics" aria-live="polite"></div>
+</div></section>
+
+<section id="mandatory"><div class="wrap">
+  <h2>Mandatory training</h2>
+  <div id="mandList"></div>
+  <p class="sub" style="margin-top:22px">All courses are on Virtual Academy. For account problems, email <a href="mailto:virtualacademy@howardcountymd.gov">virtualacademy@howardcountymd.gov</a>.</p>
 </div></section>
 </main>
 
@@ -120,8 +118,8 @@ const ANNOUNCEMENTS = [
 ];
 
 const MANDATORY_GROUPS = {
-  "All personnel":"Required for all members. Items marked with an audience apply only to that group.",
-  "Operational personnel with an EMT license or higher":"The Maryland protocol update is on the MIEMSS training portal. All operational BLS and ALS providers must upload their certificate to Virtual Academy.",
+  "All personnel":"",
+  "Operational personnel with an EMT license or higher":"",
   "Operational fire personnel":""
 };
 const MANDATORY = [
@@ -130,7 +128,7 @@ const MANDATORY = [
   {group:"All personnel", title:"Environmental Compliance Training", due:"Was due 7/31", link:"https://www.hcdfrsvirtual.academy/course/view.php?id=830"},
   {group:"All personnel", title:"DVRS (radio) training", due:"Was due 5/31", link:"https://www.hcdfrsvirtual.academy/course/view.php?id=833", note:"Required for all operational personnel"},
   {group:"All personnel", title:"Annual cybersecurity training (KnowBe4)", due:"", link:"https://training.knowbe4.com/app/login", note:"Required for personnel with county IT accounts. Sign in with your Howard County email"},
-  {group:"Operational personnel with an EMT license or higher", title:"Maryland Protocol Update", due:"Certificate due 30 June 2026", link:"https://www.hcdfrsvirtual.academy/course/view.php?id=835#section-1", note:"Upload your certificate to Virtual Academy"},
+  {group:"Operational personnel with an EMT license or higher", title:"Maryland Protocol Update", due:"Was due 6/30", link:"https://www.hcdfrsvirtual.academy/course/view.php?id=835#section-1", note:"Upload your certificate to Virtual Academy"},
   {group:"Operational fire personnel", title:"SCBA annual refresher training", due:"Was due 7/31", link:"https://www.hcdfrsvirtual.academy/course/view.php?id=825"}
 ];
 
@@ -159,11 +157,10 @@ const EMS = [
  {t:"Diabetic and Altered Mental Status Calls", o:["Glucose assessment","Differential for altered mental status"]},
  {t:"Respiratory Emergencies", o:["Asthma, COPD and CHF","Oxygen and assisted ventilation"]},
  {t:"Childbirth and OB Emergencies", o:["Field delivery steps","Newborn care and complications"]},
- {t:"Downed Firefighter CPR", o:["Rapid removal and PPE and SCBA access","CPR and AED use on a firefighter in gear"]},
+ {t:"Downed Firefighter CPR", o:["Rapid removal of PPE and SCBA","CPR on firefighter in gear"]},
  {t:"Overdose Response", o:["Recognition and airway support","Naloxone per protocol"]},
  {t:"Cold Exposure and Patient Documentation", o:["Hypothermia care","Clear, complete run reports"]}
 ];
-const DRILL_INFO = "Drill night: see the department calendar for date, time and location.";
 /* Optional: add materials links by month, e.g. FIRE_LINKS[0]="https://..." */
 const FIRE_LINKS = [], EMS_LINKS = [];
 /* Resources by month (index 0 = Jan). Each: {title, url, note} */
@@ -219,8 +216,7 @@ function show(m){
     ${note?`<p class="note">${esc(note)}${nl?`<br><a class="btn" style="margin-top:8px" href="${esc(nl.url)}" target="_blank" rel="noopener">${esc(nl.text)}</a>`:""}</p>`:""}
     <div>${FULL[m]} objectives</div><ul>${d.o.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>
     ${res&&res.length?`<h4>Resources</h4><ul class="res">${res.map(r=>`<li><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.title)}</a>${r.note?`<span>${esc(r.note)}</span>`:""}</li>`).join("")}</ul>`:""}
-    ${link?`<a class="btn" href="${esc(link)}" target="_blank" rel="noopener">Open materials</a>`:""}
-    <div class="when">${esc(DRILL_INFO)}</div></article>`;
+    ${link?`<a class="btn" href="${esc(link)}" target="_blank" rel="noopener">Open materials</a>`:""}</article>`;
   $("topics").innerHTML=card("Fire","",FIRE[m],FIRE_LINKS[m],FIRE_RES[m],FIRE_NOTE[m])+card("EMS","ems",EMS[m],EMS_LINKS[m],EMS_RES[m],EMS_NOTE[m],EMS_NOTE_LINK[m]);
 }
 $("months").innerHTML=MONTHS.map((n,i)=>`<button type="button" aria-pressed="false" ${i<FIRST_ACTIVE?"disabled":""} class="${i===nowM?"now":""}" title="${FULL[i]}">${n}</button>`).join("");
