@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Savage Volunteer Fire Company Training</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3f4f6;--panel:#fff;--ink:#14213d;--muted:#5b6577;--line:#d5d9e0;--yellow:#f2b705;--red:#b3261e;--ems:#1d6f8f;--fire:#b3261e;--on-dark:#fff;--head:#14213d;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1522;--panel:#172033;--ink:#eef1f6;--muted:#a3adbf;--line:#2c3850;--red:#ff6b5e;--fire:#ff6b5e;--ems:#5cc0e0;--head:#0a101b}}
+:root[data-theme="dark"]{--bg:#0e1522;--panel:#172033;--ink:#eef1f6;--muted:#a3adbf;--line:#2c3850;--red:#ff6b5e;--fire:#ff6b5e;--ems:#5cc0e0;--head:#0a101b}
+html{scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.55 Barlow,system-ui,sans-serif}
+h1,h2,h3{font-family:"Barlow Condensed","Arial Narrow",sans-serif;line-height:1.1;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+header{background:var(--head);color:var(--on-dark);border-bottom:6px solid var(--yellow)}
+.wrap{max-width:1020px;margin:0 auto;padding:0 20px}
+.brand{padding:34px 0 22px}
+.brand h1{font-size:clamp(2.3rem,7vw,4rem);font-weight:700;letter-spacing:.01em}
+.brand p{margin:8px 0 0;color:#c9d1e0;max-width:56ch}
+nav{position:sticky;top:0;z-index:5;background:var(--head);padding-top:env(safe-area-inset-top,0px);border-top:1px solid #ffffff22}
+nav .wrap{display:flex;gap:4px;overflow-x:auto}
+nav a{color:#dfe5f1;text-decoration:none;padding:14px 16px;font:600 1.15rem "Barlow Condensed",sans-serif;white-space:nowrap;border-bottom:3px solid transparent}
+nav a:hover{color:#fff;border-color:var(--yellow)}
+section{padding:44px 0 8px}
+section>.wrap>h2{font-size:2.3rem;font-weight:700}
+.sub{color:var(--muted);margin:6px 0 22px;max-width:60ch}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:6px}
+.ann{display:grid;gap:12px}
+.ann article{padding:16px 18px;border-left:6px solid var(--line)}
+.ann article.important{border-left-color:var(--red)}
+.ann article.new{border-left-color:var(--yellow)}
+.ann h3{font-size:1.4rem;font-weight:600}
+.ann time{color:var(--muted);font-size:.9rem}
+.ann p{margin:6px 0 0}
+.tag{display:inline-block;font-size:.8rem;font-weight:600;padding:1px 8px;border-radius:99px;margin-left:8px;vertical-align:middle;background:var(--red);color:#fff}
+.tag.new{background:var(--yellow);color:#14213d}
+.mand{list-style:none;margin:0;padding:0}
+.mand li{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line)}
+.mand li:last-child{border:0}
+.mand input{width:22px;height:22px;accent-color:var(--red)}
+.mand .t{font-weight:600}
+.mand .m{color:var(--muted);font-size:.92rem}
+.mand li.done .t{text-decoration:line-through;color:var(--muted)}
+.btn{display:inline-block;background:var(--ink);color:var(--panel);text-decoration:none;font-weight:600;padding:8px 16px;border-radius:4px;font-size:.95rem}
+.btn:hover{background:var(--red);color:#fff}
+.months{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+.months button{font:600 1.05rem "Barlow Condensed",sans-serif;min-width:56px;padding:8px 10px;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:4px;cursor:pointer}
+.months button[aria-pressed="true"]{background:var(--yellow);border-color:var(--yellow);color:#14213d}
+.months button.now{box-shadow:inset 0 -4px 0 var(--red)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:720px){.split{grid-template-columns:1fr}.mand li{grid-template-columns:auto 1fr}.mand .btn{grid-column:2;justify-self:start}}
+.topic{padding:20px;border-top:8px solid var(--fire)}
+.topic.ems{border-top-color:var(--ems)}
+.topic .k{font:700 1.1rem "Barlow Condensed",sans-serif;color:var(--fire)}
+.topic.ems .k{color:var(--ems)}
+.topic h3{font-size:1.9rem;margin:2px 0 8px}
+.topic ul{margin:10px 0 14px;padding-left:20px}
+.topic .when{color:var(--muted);font-size:.93rem;margin-top:10px}
+footer{margin-top:56px;padding:26px 0 34px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap brand">
+    <h1>Savage Volunteer Fire Company<br>Training</h1>
+    <p>Monthly drills, required annual training, and news from the Training Officer.</p>
+  </div>
+</header>
+<nav aria-label="Sections"><div class="wrap">
+  <a href="#announcements">Announcements</a>
+  <a href="#mandatory">Mandatory training</a>
+  <a href="#monthly">Monthly topics</a>
+</div></nav>
+
+<main>
+<section id="announcements"><div class="wrap">
+  <h2>Training announcements</h2>
+  <p class="sub">Newest first. Check here before drill night.</p>
+  <div class="ann" id="annList"></div>
+</div></section>
+
+<section id="mandatory"><div class="wrap">
+  <h2>Mandatory training</h2>
+  <p class="sub">Required annual training for all members. Use the checkboxes to track what you've finished; they're saved on this device only. Your official record is still kept by the Training Officer.</p>
+  <div class="card"><ul class="mand" id="mandList"></ul></div>
+</div></section>
+
+<section id="monthly"><div class="wrap">
+  <h2>Monthly training topics</h2>
+  <p class="sub">Choose a month to see the Fire and EMS topic.</p>
+  <div class="months" id="months" role="group" aria-label="Month"></div>
+  <div class="split" id="topics" aria-live="polite"></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  Savage Volunteer Fire Company. This site supplements, and never replaces, hands-on and instructor-led training. Follow department SOPs and your Training Officer's direction.
+</div></footer>
+
+<script>
+/* ===== TRAINING OFFICER: EDIT THIS SECTION ONLY =====
+   Replace the sample text and "#" links with your own. */
+
+const ANNOUNCEMENTS = [
+  {date:"2026-09-27", title:"Fall drill schedule posted", body:"Drills are held on the scheduled training nights. Check the monthly topics below and bring your full PPE unless told otherwise.", flag:"new"},
+  {date:"2026-09-15", title:"Annual SCBA fit testing", body:"All interior-qualified members must complete fit testing. Sign up with the Training Officer.", flag:"important"},
+  {date:"2026-09-01", title:"Welcome to the new training site", body:"Monthly topics and required annual training now live here. Send feedback to the Training Officer.", flag:""}
+];
+
+const MANDATORY = [
+  {title:"Bloodborne Pathogens", due:"Due by Dec 31", link:"#", note:"Annual refresher"},
+  {title:"Hazardous Materials Awareness", due:"Due by Dec 31", link:"#", note:"Annual refresher"},
+  {title:"SCBA Use and Maintenance", due:"Due by Dec 31", link:"#", note:"Includes fit test"},
+  {title:"Incident Command / NIMS Refresher", due:"Due by Dec 31", link:"#", note:"Annual refresher"},
+  {title:"Emergency Vehicle Operations", due:"Due by Dec 31", link:"#", note:"Drivers and operators"},
+  {title:"Department SOP Review and Sign-off", due:"Due by Dec 31", link:"#", note:"All members"}
+];
+
+/* Index 0 = January. "materials" is a link to slides, video, or handout. */
+const FIRE = [
+ {t:"SCBA Donning and Emergency Procedures", o:["Don SCBA in under one minute","Low-air and Mayday actions"]},
+ {t:"Cold Weather Operations and Hydrants", o:["Hydrant location and clearing","Ice hazards on scene and on apparatus"]},
+ {t:"Ground Ladders", o:["Ladder selection and carries","Raises and safe climbing angle"]},
+ {t:"Hose Lines and Nozzles", o:["Hose loads and deployment","Nozzle patterns and flow"]},
+ {t:"Water Supply", o:["Forward and reverse lays","Tanker shuttle basics"]},
+ {t:"Heat Stress and Rehab", o:["Recognize heat illness in crew","Set up and run a rehab sector"]},
+ {t:"Vehicle Fires", o:["Approach and positioning","Suppression and overhaul"]},
+ {t:"Pump Operations", o:["Pump panel review","Pressure calculations and troubleshooting"]},
+ {t:"Fire Prevention Preparation", o:["Prepare for Fire Prevention Month","Station tours and public education"]},
+ {t:"Fire Prevention Month Activities", o:["Deliver key safety messages","Working with school groups"]},
+ {t:"Heating and Chimney Fires", o:["Common causes and size-up","Safe extinguishment and checks for extension"]},
+ {t:"Holiday Fire Hazards and Mayday Drill", o:["Tree, candle and cooking fires","Mayday and RIT practice"]}
+];
+const EMS = [
+ {t:"Cardiac Arrest and High-Quality CPR", o:["Compression depth and rate","AED use and team roles"]},
+ {t:"Stroke Recognition", o:["Stroke scales","Time-critical reporting"]},
+ {t:"Airway Management", o:["Basic airway adjuncts","Suction and BVM technique"]},
+ {t:"Trauma Assessment", o:["Primary survey","Bleeding control and splinting"]},
+ {t:"Pediatric Emergencies", o:["Pediatric assessment","Common medical and trauma calls"]},
+ {t:"Heat Emergencies", o:["Heat exhaustion versus heat stroke","Cooling methods"]},
+ {t:"Diabetic and Altered Mental Status Calls", o:["Glucose assessment","Differential for altered mental status"]},
+ {t:"Respiratory Emergencies", o:["Asthma, COPD and CHF","Oxygen and assisted ventilation"]},
+ {t:"Childbirth and OB Emergencies", o:["Field delivery steps","Newborn care and complications"]},
+ {t:"Behavioral Health Calls", o:["De-escalation","Scene safety and handoff"]},
+ {t:"Overdose Response", o:["Recognition and airway support","Naloxone per protocol"]},
+ {t:"Cold Exposure and Patient Documentation", o:["Hypothermia care","Clear, complete run reports"]}
+];
+const DRILL_INFO = "Drill night: see the department calendar for date, time and location.";
+/* Optional: add materials links by month, e.g. FIRE_LINKS[0]="https://..." */
+const FIRE_LINKS = [], EMS_LINKS = [];
+/* ===== END EDIT SECTION ===== */
+
+const MONTHS=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const FULL=["January","February","March","April","May","June","July","August","September","October","November","December"];
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+/* Announcements */
+$("annList").innerHTML=[...ANNOUNCEMENTS].sort((a,b)=>b.date.localeCompare(a.date)).map(a=>{
+  const d=new Date(a.date+"T12:00:00").toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric"});
+  const tag=a.flag==="important"?'<span class="tag">Important</span>':a.flag==="new"?'<span class="tag new">New</span>':"";
+  return `<article class="card ${esc(a.flag)}"><h3>${esc(a.title)}${tag}</h3><time>${d}</time><p>${esc(a.body)}</p></article>`}).join("");
+
+/* Mandatory training */
+let done={};
+try{done=JSON.parse(localStorage.getItem("savage-mand")||"{}")}catch(e){}
+function drawMand(){
+  $("mandList").innerHTML=MANDATORY.map((m,i)=>`<li class="${done[i]?"done":""}">
+    <input type="checkbox" id="m${i}" data-i="${i}" ${done[i]?"checked":""} aria-label="Mark ${esc(m.title)} complete">
+    <label for="m${i}"><span class="t">${esc(m.title)}</span><br><span class="m">${esc(m.due)}${m.note?" · "+esc(m.note):""}</span></label>
+    <a class="btn" href="${esc(m.link)}" target="_blank" rel="noopener">Open training</a></li>`).join("");
+}
+$("mandList").addEventListener("change",e=>{
+  if(!e.target.dataset.i)return;
+  done[e.target.dataset.i]=e.target.checked;
+  try{localStorage.setItem("savage-mand",JSON.stringify(done))}catch(err){}
+  drawMand();
+});
+drawMand();
+
+/* Monthly topics */
+const nowM=new Date().getMonth();
+function show(m){
+  $("months").querySelectorAll("button").forEach((b,i)=>b.setAttribute("aria-pressed",i===m));
+  const card=(kind,cls,d,link)=>`<article class="card topic ${cls}"><div class="k">${kind}</div><h3>${esc(d.t)}</h3>
+    <div>${FULL[m]} objectives</div><ul>${d.o.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>
+    ${link?`<a class="btn" href="${esc(link)}" target="_blank" rel="noopener">Open materials</a>`:""}
+    <div class="when">${esc(DRILL_INFO)}</div></article>`;
+  $("topics").innerHTML=card("Fire","",FIRE[m],FIRE_LINKS[m])+card("EMS","ems",EMS[m],EMS_LINKS[m]);
+}
+$("months").innerHTML=MONTHS.map((n,i)=>`<button type="button" aria-pressed="false" class="${i===nowM?"now":""}" title="${FULL[i]}">${n}</button>`).join("");
+$("months").addEventListener("click",e=>{const b=e.target.closest("button");if(b)show([...$("months").children].indexOf(b))});
+show(nowM);
+</script>
+</body>
+</html>
