@@ -207,9 +207,9 @@ function drawMand(){
 drawMand();
 
 /* Monthly topics */
-/* Months before this one are greyed out (0 = Jan, 9 = Oct) */
-const FIRST_ACTIVE=9;
-const nowM=Math.max(new Date().getMonth(),FIRST_ACTIVE);
+/* Months outside FIRST_ACTIVE to LAST_ACTIVE are greyed out (0 = Jan, 9 = Oct, 11 = Dec) */
+const FIRST_ACTIVE=9, LAST_ACTIVE=9;
+const nowM=Math.min(Math.max(new Date().getMonth(),FIRST_ACTIVE),LAST_ACTIVE);
 function show(m){
   $("months").querySelectorAll("button").forEach((b,i)=>b.setAttribute("aria-pressed",i===m));
   const card=(kind,cls,d,link,res,note,nl)=>`<article class="card topic ${cls}"><div class="k">${kind}</div><h3>${esc(d.t)}</h3>
@@ -219,7 +219,7 @@ function show(m){
     ${link?`<a class="btn" href="${esc(link)}" target="_blank" rel="noopener">Open materials</a>`:""}</article>`;
   $("topics").innerHTML=card("Fire","",FIRE[m],FIRE_LINKS[m],FIRE_RES[m],FIRE_NOTE[m])+card("EMS","ems",EMS[m],EMS_LINKS[m],EMS_RES[m],EMS_NOTE[m],EMS_NOTE_LINK[m]);
 }
-$("months").innerHTML=MONTHS.map((n,i)=>`<button type="button" aria-pressed="false" ${i<FIRST_ACTIVE?"disabled":""} class="${i===nowM?"now":""}" title="${FULL[i]}">${n}</button>`).join("");
+$("months").innerHTML=MONTHS.map((n,i)=>`<button type="button" aria-pressed="false" ${i<FIRST_ACTIVE||i>LAST_ACTIVE?"disabled":""} class="${i===nowM?"now":""}" title="${FULL[i]}">${n}</button>`).join("");
 $("months").addEventListener("click",e=>{const b=e.target.closest("button");if(b&&!b.disabled)show([...$("months").children].indexOf(b))});
 show(nowM);
 </script>
